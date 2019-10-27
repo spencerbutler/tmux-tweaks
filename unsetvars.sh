@@ -1,0 +1,20 @@
+set-env -gu theme_pri
+set-env -gu theme_sec
+set-env -gu theme_ter
+set-env -gu theme_z
+set-env -gu theme_za
+set-env -gu theme_wactive
+set-env -gu current_format
+set-env -gu pane_border
+set-env -gu mode_style
+
+set-env -gu theme_ter
+set-env -gu theme_pri
+set-env -gu theme_second
+set-env -gu theme_third
+set-env -gu theme_wtf
+set-env -gu theme_wactive
+set-env -gu theme_fg_w_current
+set-env -gu theme_pane_border
+set-env -gu theme_mode_style
+set-env -gu theme_status_bg
