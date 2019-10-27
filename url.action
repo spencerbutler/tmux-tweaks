@@ -1,0 +1,6 @@
+capture-pane -J -S -1000 -b urlbuffer
+split-window "tmux save-buffer -b urlbuffer - | urlview"
+
+# wip
+#choose-buffer 'save-buffer -b %1 /tmp/tmux_buffer_%1'
+#split-window "tmux paste-buffer /tmp/tmux_buffer_%1 - | urlview"
