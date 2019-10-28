@@ -11,12 +11,12 @@ set -g status-style fg=$theme_second,bg=$theme_pri
 # Left side of status bar
 set -g status-left-style bg=$theme_pri,fg=$theme_second
 set -g status-left-length 40
-set -g status-left "#[fg=$theme_pri,bg=$theme_ter,bold] #S #[fg=$theme_ter,bg=$theme_second,nobold]$left_sep#[fg=$theme_pri,bg=$theme_second] #(whoami) #[fg=$theme_second,bg=$theme_third]$left_sep#[fg=$theme_second,bg=$theme_third] #I:#P #[fg=$theme_third,bg=$theme_pri,nobold]$left_sep #{?client_prefix,$prefix_icons}"
+set -g status-left "#h #[fg=$theme_pri,bg=$theme_ter,bold] #S #[fg=$theme_ter,bg=$theme_second,nobold]$left_sep#[fg=$theme_pri,bg=$theme_second] #{continuum_status} #[fg=$theme_second,bg=$theme_third]$left_sep#[fg=$theme_second,bg=$theme_third] #I:#P #[fg=$theme_third,bg=$theme_pri,nobold]$left_sep #{?client_prefix,$prefix_icons}"
 
 # Right side of status bar
 set -g status-right-style bg=$theme_pri,fg=$theme_wtf
 set -g status-right-length 150
-set -g status-right "#[fg=$theme_third,bg=$theme_pri]$right_sep#[fg=$theme_second,bg=$theme_third] $time_format #[fg=$theme_second,bg=$theme_third]$right_sep#[fg=$theme_pri,bg=$theme_second] $date_format #[fg=$theme_ter,bg=$theme_second]$right_sep#[fg=$theme_pri,bg=$theme_ter,bold] #H "
+set -g status-right "#[fg=$theme_third,bg=$theme_pri]$right_sep#[fg=$theme_second,bg=$theme_third] #[fg=$theme_second,bg=$theme_third]$right_sep#[fg=$theme_pri,bg=$theme_second] $date_format #[fg=$theme_ter,bg=$theme_second]$right_sep#[fg=$theme_pri,bg=$theme_ter,bold] $time_format "
 
 # Window status
 set -g window-status-format "  #I:#W #{?window_zoomed_flag,$zoom_icons} "
