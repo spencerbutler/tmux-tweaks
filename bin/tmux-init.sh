@@ -41,7 +41,7 @@ install_tmux() {
       sudo yum install tmux || { echo "I couldn't install tmux"; exit; }
     fi
 
-  elif [[ $linux_name == debian ]]; then
+  elif [[ $linux_name == bian$ ]]; then
     sudo apt install tmux || { echo "I couldn't install tmux"; exit; }
 
   elif [[ $osname == fbsd ]]; then
