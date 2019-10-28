@@ -27,8 +27,8 @@ get_linux_ver() {
 
 install_tmux() {
   echo "You don't have the tmux, installing."
-  if [ $linux_name == centos  ]; then
-    if [ $linux_maj -lt 8 ]; then
+  if [[ $linux_name == centos  ]]; then
+    if [[ $linux_maj -lt 8 ]]; then
       echo "CentOS $linux_maj is old and comes with tmux 1.8"
       echo "You should install the IUS repo"
       echo "SHELL$: sudo yum install https://repo.ius.io/ius-release-el$linux_maj.rpm"
@@ -41,33 +41,35 @@ install_tmux() {
       sudo yum install tmux || { echo "I couldn't install tmux"; exit; }
     fi
 
-  elif [ $linux_name == debian ]; then
+  elif [[ $linux_name == debian ]]; then
     sudo apt install tmux || { echo "I couldn't install tmux"; exit; }
 
-  elif [ $osname == fbsd ]; then
+  elif [[ $osname == fbsd ]]; then
     sudo pkg install tmux || { echo "I couldn't install tmux"; exit; }
 
-  elif [ $osname == obsd ]; then
+  elif [[ $osname == obsd ]]; then
     echo "tmux is in OpenBSD base, not sure what's going on here."
     exit 1
 
   else
     echo "Use your package managing skills to install tmux."
+    exit
   fi
+  main
 }
 
 install_git() {
   echo "You have no git! Let's try and install it."
-  if [ $linux_name == centos ]; then
+  if [[ $linux_name == centos ]]; then
     sudo yum install git || { echo "I tried..."; exit; }
 
-  elif [ $linux_name == debian ]; then
+  elif [[ $linux_name == debian ]]; then
     sudo apt install git || { echo "I tried..."; exit; }
 
-  elif [ $osname == fbsd ]; then
+  elif [[ $osname == fbsd ]]; then
     sudo pkg install git || { echo "I tried..."; exit; }
 
-  elif [ $osname == obsd ]; then
+  elif [[ $osname == obsd ]]; then
     pkginfo=$(sudo pkg_info -Q git)
     if [ -z $pkginfo ]; then
       echo "I can't find git in your PKG_PATH. Let's try ftp.openbsd.org"
@@ -82,6 +84,7 @@ install_git() {
     fi
   fi
   echo "Now you have the gits!!"
+  main
 }
 
 have_dirs() {
@@ -93,9 +96,9 @@ get_gits() {
 }
 
 main() {
-  if [ ! have_tmux ]; then
+  if ! have_tmux; then
     install_tmux
-  elif [ ! have_git ]; then
+  elif ! have_git; then
     install_git
   fi
 
