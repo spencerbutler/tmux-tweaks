@@ -25,8 +25,8 @@ get_gits() {
 
 get_linux_ver() {
     if [ -f /etc/os-release ]; then
-        linux_name=$(grep '^ID=' /etc/os-release)
-        linux_maj=$(grep '^VERSION_ID=' /etc/os-release)
+        linux_name=$(grep '^ID=' /etc/os-release | tr -d '"' | cut -d '=' -f 2)
+        linux_maj=$(grep '^VERSION_ID=' /etc/os-release | tr -d '"' | cut -d '=' -f 2)
     else
         linux_name=Linux
         linux_maj=unknown
@@ -45,9 +45,9 @@ linux() {
           echo 
           echo "Installing the tmux for your release."
           echo "Some stuff is not going to work."
-          sudo yum install tmux || { echo "I couldn't install tmux"; exit; }
+          sudo yum install tmux || { echo "I could not install tmux"; exit; }
         else
-          sudo yum install tmux || { echo "I couldn't install tmux"; exit; }
+          sudo yum install tmux || { echo "I could not install tmux"; exit; }
         fi
       elif [ $linux_name == debian ]; then
         sudo apt install tmux
@@ -92,14 +92,14 @@ linux() {
 fbsd() {
   if [ ! have_tmux ]; then
       echo "You don't have the tmux, installing."
-      sudo pkg add tmux || { echo "I couldn't install tmux"; exit; }
+      sudo pkg add tmux || { echo "I could not install tmux"; exit; }
   fi
 
   if have_git; then
     linux
   else
     echo "You have no git!"
-    sudo pkg add git || { echo "I tried..."; exit; }
+    sudo pkg install git || { echo "Could not install git."; exit; }
     echo "Now you have the gits!!"
     linux
   fi
@@ -111,10 +111,20 @@ obsd() {
       linux
   else
     echo "You have no git!"
-    sudo pkg_add git || \
-        export PKG_PATH=$PKG_PATH:http://ftp.openbsd.org/pub/OpenBSD/%c/packages/%a/ 
-        sudo pkg_add git
-    linux
+    echo "I'll try to install"
+    pkginfo=$(sudo pkg_info -Q git)
+    if [ -z $pkginfo ]; then
+      echo "I can't find git in your PKG_PATH. Let's try ftp.openbsd.org"
+      echo "PKG_PATH = $PKG_PATH"
+      export PKG_PATH=$PKG_PATH:http://ftp.openbsd.org/pub/OpenBSD/%c/packages/%a/ 
+      sudo pkg_add git
+      if command -v git 1>/dev/null; then
+        echo "Git installed. Now let's get tmux working."
+        linux
+      else
+        echo "You'll need to install git to proceed"; exit
+      fi
+    fi
   fi
 }
 
