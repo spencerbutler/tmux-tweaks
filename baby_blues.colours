@@ -2,14 +2,25 @@ theme_ter=colour39          #1st; command-prompt bg
 theme_pri=colour33          #1st fg; status bg; current window fg
 theme_second=colour26       #2nd bg for 2nd fg for 3rd
 theme_third=colour39        #3rd fg = second
-theme_wtf=colour123         #wtf here, not sure where we see this.
+theme_wtf=colour1         #wtf here, not sure where we see this.
 theme_wactive=colour232
 theme_fg_w_current=18
 theme_pane_border=colour238
 theme_mode_style=colour232
 theme_status_bg=colour27
 
+win_sep='❎'
 left_sep=ᐒ
 right_sep=ᑄ
+
+# Conditionals are available by prefixing with ‘?’ and separating two alternatives with a comma; if
+# the specified variable exists and is not zero, the first alternative is chosen, otherwise the second
+prefix_icons='❌,•'         
+zoom_icons='۩,۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫܀'
+
+date_format='%a %b %d'
+time_format='%H:%M:%S'
+
+
 #left_sep=
 #right_sep=

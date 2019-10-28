@@ -9,7 +9,14 @@ theme_pane_border=colour238
 theme_mode_style=colour232
 theme_status_bg=colour27
 
-#left_sep=ᐒ
-#right_sep=ᑄ
+win_sep=❎'
 left_sep=
 right_sep=
+prefix_icons='❌,•'
+zoom_icons='۩,۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫܀'
+date_format='%a %b %d'
+
+
+
+#left_sep=ᐒ
+#right_sep=ᑄ

@@ -1,17 +1,6 @@
-# variable controls
-# these are the defaults from the themepack
-# theme_pri=colour233
-# theme_second=colour240
-# theme_ter=colour39
-# theme_third=colour235
-# theme_wtf=$theme_wtf
-# theme_wactive=colour245
-# theme_fg_w_current=colour81
-# theme_pane_border=colour238
-# theme_mode_style=colour232
-# theme_status_bg=black
-#source-file ~/tmux-tweaks/first.colours
-#source-file ~/tmux-tweaks/second.colours
+# The variables here are defined in ${colour}.colours
+# `set -g @spencer_colours 'baby_blues'` specifies tmux-tweaks/baby_blues.colours
+# See spencer.tmux for more info
 
 # Status update interval
 set -g status-interval 1
@@ -20,18 +9,18 @@ set -g status-interval 1
 set -g status-style fg=$theme_second,bg=$theme_pri
 
 # Left side of status bar
-set -g status-left-style "bg=$theme_pri,fg=$theme_wtf"
+set -g status-left-style bg=$theme_pri,fg=$theme_second
 set -g status-left-length 40
-set -g status-left "#[fg=$theme_pri,bg=$theme_ter,bold] #S #[fg=$theme_ter,bg=$theme_second,nobold]$left_sep#[fg=$theme_pri,bg=$theme_second] #(whoami) #[fg=$theme_second,bg=$theme_third]$left_sep#[fg=$theme_second,bg=$theme_third] #I:#P #[fg=$theme_third,bg=$theme_pri,nobold]$left_sep"
+set -g status-left "#[fg=$theme_pri,bg=$theme_ter,bold] #S #[fg=$theme_ter,bg=$theme_second,nobold]$left_sep#[fg=$theme_pri,bg=$theme_second] #(whoami) #[fg=$theme_second,bg=$theme_third]$left_sep#[fg=$theme_second,bg=$theme_third] #I:#P #[fg=$theme_third,bg=$theme_pri,nobold]$left_sep #{?client_prefix,$prefix_icons}"
 
 # Right side of status bar
 set -g status-right-style bg=$theme_pri,fg=$theme_wtf
 set -g status-right-length 150
-set -g status-right "#[fg=$theme_third,bg=$theme_pri]$right_sep#[fg=$theme_second,bg=$theme_third] %H:%M:%S #[fg=$theme_second,bg=$theme_third]$right_sep#[fg=$theme_pri,bg=$theme_second] %d-%b-%y #[fg=$theme_ter,bg=$theme_second]$right_sep#[fg=$theme_pri,bg=$theme_ter,bold] #H "
+set -g status-right "#[fg=$theme_third,bg=$theme_pri]$right_sep#[fg=$theme_second,bg=$theme_third] $time_format #[fg=$theme_second,bg=$theme_third]$right_sep#[fg=$theme_pri,bg=$theme_second] $date_format #[fg=$theme_ter,bg=$theme_second]$right_sep#[fg=$theme_pri,bg=$theme_ter,bold] #H "
 
 # Window status
-set -g window-status-format "  #I:#W #{?window_zoomed_flag,۩,۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫܀} "
-set -g window-status-current-format "#[fg=$theme_pri,bg=$theme_status_bg]$left_sep#[fg=$theme_fg_w_current,nobold] #I:#W #{?window_zoomed_flag,۩,۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫܀} #[fg=$theme_pri,bg=$theme_status_bg,nobold]$right_sep"
+set -g window-status-format "  #I:#W #{?window_zoomed_flag,$zoom_icons} "
+set -g window-status-current-format "#[fg=$theme_pri,bg=$theme_status_bg]$left_sep#[fg=$theme_fg_w_current,nobold] #I:#W #{?window_zoomed_flag,$zoom_icons} #[fg=$theme_pri,bg=$theme_status_bg,nobold]$right_sep"
 
 # Current window status
 set -g window-status-current-style bg=$theme_ter,fg=$theme_third
@@ -40,7 +29,7 @@ set -g window-status-current-style bg=$theme_ter,fg=$theme_third
 set -g window-status-activity-style bg=$theme_pri,fg=$theme_wactive
 
 # Window separator
-set -g window-status-separator "❎"
+set -g window-status-separator $win_sep
 
 # Window status alignment
 set -g status-justify centre
@@ -53,17 +42,17 @@ set -g pane-active-border-style bg=default,fg=$theme_ter
 
 # Pane number indicator
 set -g display-panes-colour $theme_pri
-set -g display-panes-active-colour colour245
+set -g display-panes-active-colour $theme_wactive
 
 # Clock mode
 set -g clock-mode-colour $theme_ter
 set -g clock-mode-style 24
 
 # Message
-set -g message-style bg=$theme_ter,fg=black
+set -g message-style bg=$theme_ter,fg=$theme_pri
 
 # Command message
-set -g message-command-style bg=$theme_pri,fg=black
+set -g message-command-style bg=$theme_pri,fg=$theme_ter
 
 # Mode
 set -g mode-style bg=$theme_ter,fg=$theme_mode_style
