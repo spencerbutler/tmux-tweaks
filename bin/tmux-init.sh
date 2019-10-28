@@ -23,39 +23,38 @@ get_gits() {
     git clone ${giturl}/${1}.git ${repos[$1]} || { echo Could not get ${giturl}/${1}.git; }
 }
 
+get_linux_ver() {
+    if [ -f /etc/os-release ]; then
+        local name=$(grep '^ID=' /etc/os-release)
+        local maj=$(grep '^VERSION_ID=' /etc/os-release)
+        linuxver="$name $maj"
+    else
+        linuxver='Linux Unknown'
+    fi
+}
+
 linux() {
   if [ ! have_tmux ]; then
       echo "You don't have the tmux, installing."
-      if [ command -v rpm ]; then
-        centmaj="$(rpm -E %{rhel})"
-        if [[ $centmaj -lt 8 ]]; then
-          echo "CentOS $centmaj is old and comes with tmux 1.8"
+      get_linux_ver
+      if [ ${linuxver% *} == centos  ]; then
+        if [ ${linuxver#* } -lt 8 ]; then
+          echo "CentOS ${linuxver#* } is old and comes with tmux 1.8"
           echo "You should install the IUS repo"
-          echo "SHELL$: sudo yum install https://repo.ius.io/ius-release-el${centmaj}.rpm"
+          echo "SHELL$: sudo yum install https://repo.ius.io/ius-release-el${linuxver# *}.rpm"
           echo "SHELL$: sudo yum install tmux2"
           echo 
           echo "Installing the tmux for your release."
           echo "Some stuff is not going to work."
           sudo yum install tmux || { echo "I couldn't install tmux"; exit; }
+        else
+          sudo yum install tmux || { echo "I couldn't install tmux"; exit; }
         fi
+      elif [ ${linuxver% *} == debian ]; then
+        sudo apt install tmux
       else
         echo "Use your package manager to install tmux."
       fi
-  else
-      if [ $(uname -s) == OpenBSD ]; then
-          true
-      else 
-        tmuxver=$(tmux -V)
-        centmaj="$(rpm -E %{rhel})"
-        if [[ ${tmuxver#* } =~ ^1 ]]; then
-          echo "Your tmux version \"$tmuxver\" is old, please upgrade"
-          echo "You should install the IUS repo"
-          echo "SHELL$: sudo yum install https://repo.ius.io/ius-release-el${centmaj}.rpm"
-          echo "SHELL$: sudo remove tmux"
-          echo "SHELL$: sudo yum install tmux2"
-        fi
-      fi
-
   fi
 
   if have_git; then
@@ -119,6 +118,6 @@ case $(uname -s) in
   Linux  ) linux;;
   FreeBSD) fbsd;;
   OpenBSD) obsd;;
-  *      ) { echo $(uname -s) not supported.; exit; }
+  *      ) { echo "$(uname -s) not supported."; exit; }
 esac
 
