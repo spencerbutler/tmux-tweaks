@@ -8,11 +8,11 @@ repos[spencerbutler/tmux-tweaks]="$HOME/tmux-tweaks"
 repos[tmux-plugins/tpm]="$HOME/.tmux/plugins/tpm"
 
 have_tmux() {
-    which tmux /dev/null 2&>1
+    command -v tmux 1>/dev/null
 }
 
 have_git() {
-    command -v git /dev/null 2&>1
+    command -v git 1>/dev/null
 }
 
 have_dirs() {
@@ -25,23 +25,22 @@ get_gits() {
 
 get_linux_ver() {
     if [ -f /etc/os-release ]; then
-        local name=$(grep '^ID=' /etc/os-release)
-        local maj=$(grep '^VERSION_ID=' /etc/os-release)
-        linuxver="$name $maj"
+        linux_name=$(grep '^ID=' /etc/os-release)
+        linux_maj=$(grep '^VERSION_ID=' /etc/os-release)
     else
-        linuxver='Linux Unknown'
+        linux_name=Linux
+        linux_maj=unknown
     fi
 }
 
 linux() {
   if [ ! have_tmux ]; then
       echo "You don't have the tmux, installing."
-      get_linux_ver
-      if [ ${linuxver% *} == centos  ]; then
-        if [ ${linuxver#* } -lt 8 ]; then
-          echo "CentOS ${linuxver#* } is old and comes with tmux 1.8"
+      if [ $linux_name == centos  ]; then
+        if [ $linux_maj -lt 8 ]; then
+          echo "CentOS $linux_maj is old and comes with tmux 1.8"
           echo "You should install the IUS repo"
-          echo "SHELL$: sudo yum install https://repo.ius.io/ius-release-el${linuxver# *}.rpm"
+          echo "SHELL$: sudo yum install https://repo.ius.io/ius-release-el$linux_maj.rpm"
           echo "SHELL$: sudo yum install tmux2"
           echo 
           echo "Installing the tmux for your release."
@@ -50,7 +49,7 @@ linux() {
         else
           sudo yum install tmux || { echo "I couldn't install tmux"; exit; }
         fi
-      elif [ ${linuxver% *} == debian ]; then
+      elif [ $linux_name == debian ]; then
         sudo apt install tmux
       else
         echo "Use your package manager to install tmux."
@@ -74,13 +73,17 @@ linux() {
     if [ ! -f $HOME/.tmux.conf ]; then
         ln -s ${repos[spencerbutler/tmux-tweaks]}/conf/tmux.conf .tmux.conf
     else
-        echo "You alread have a $HOME/.tmux.conf, what to do, yo?"
+        echo "You alread have a $HOME/.tmux.conf! What to do, Yo?"
     fi
 
     echo You are ready to tmux shit up.
   else
      echo "You have no git!"
-     sudo yum install git || { echo "I tried..."; exit; }
+     if [ $linux_name == centos ]; then
+        sudo yum install git || { echo "I tried..."; exit; }
+     elif [ $linux_name == debian ]; then
+        sudo apt install git || { echo "I tried..."; exit; }
+     fi
      echo "Now you have the gits!!"
      linux
   fi
@@ -108,16 +111,17 @@ obsd() {
       linux
   else
     echo "You have no git!"
-    export PKG_PATH=$PKG_PATH:http://ftp.openbsd.org/pub/OpenBSD/%c/packages/%a/ 
-    sudo pkg_add git
+    sudo pkg_add git || \
+        export PKG_PATH=$PKG_PATH:http://ftp.openbsd.org/pub/OpenBSD/%c/packages/%a/ 
+        sudo pkg_add git
     linux
   fi
 }
 
 case $(uname -s) in
-  Linux  ) linux;;
-  FreeBSD) fbsd;;
-  OpenBSD) obsd;;
+  Linux  ) get_linux_ver; linux ;;
+  FreeBSD) fbsd ;;
+  OpenBSD) obsd ;;
   *      ) { echo "$(uname -s) not supported."; exit; }
 esac
 
