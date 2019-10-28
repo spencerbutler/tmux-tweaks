@@ -63,7 +63,7 @@ install_git() {
   if [[ $linux_name == centos ]]; then
     sudo yum install git || { echo "I tried..."; exit; }
 
-  elif [[ $linux_name == debian ]]; then
+  elif [[ $linux_name =~ bian$ ]]; then
     sudo apt install git || { echo "I tried..."; exit; }
 
   elif [[ $osname == fbsd ]]; then
