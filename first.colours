@@ -10,11 +10,9 @@ theme_mode_style=colour232
 theme_status_bg=color232
 
 
-#left_sep=ᐒ
-#right_sep=ᑄ
-left_sep=
-right_sep=
-win_sep=❎'
+left_sep=''
+right_sep=''
+win_sep='❎'
 prefix_icons='❌,•'
-zoom_icons='۩,۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫܀'
+zoom_icons='۩,۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫۫܀''
 date_format='%a %b %d'
