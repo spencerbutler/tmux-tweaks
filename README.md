@@ -2,6 +2,7 @@
 
 ## Install 
 This assumes you don't already have a $HOME/.tmux.conf. If you do, you'll need to move it out of the way to use this plugin.
+___
 ### Install Script
 The [bin/tmux-init.sh](../master/bin/tmux-init.sh) helper script has been tested to install git, tmux, this [repo](../../) and the [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
 successfully on Debian, Raspbian, FreeBSD, OpenBSD and CentOS 7.  
@@ -16,6 +17,7 @@ or
 #### FreeBSD
 `fetch -o- https://raw.githubusercontent.com/spencerbutler/tmux-tweaks/master/bin/tmux-init.sh | bash -s`
 
+---
 ### Git Clone
   
 ```
@@ -24,6 +26,7 @@ cd $HOME
 ln -s tmux-tweaks/conf/tmux.conf .tmux.conf
 tmux
 ```
+
 ## Config
 The [conf/tmux.conf](../master/conf/tmux.conf) config file should work out of the box.
 #### User Config Options
