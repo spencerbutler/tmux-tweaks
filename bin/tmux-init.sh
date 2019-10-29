@@ -8,11 +8,11 @@ repos[spencerbutler/tmux-tweaks]="$HOME/tmux-tweaks"
 repos[tmux-plugins/tpm]="$HOME/.tmux/plugins/tpm"
 
 have_tmux() {
-    command tmux 1>/dev/null
+    command -v tmux 1>/dev/null
 }
 
 have_git() {
-    command git 1>/dev/null
+    command -v git 1>/dev/null
 }
 
 get_linux_ver() {
@@ -41,7 +41,7 @@ install_tmux() {
       sudo yum install tmux || { echo "I couldn't install tmux"; exit; }
     fi
 
-  elif [[ $linux_name == bian$ ]]; then
+  elif [[ $linux_name =~ bian$ ]]; then
     sudo apt install tmux || { echo "I couldn't install tmux"; exit; }
 
   elif [[ $osname == fbsd ]]; then
