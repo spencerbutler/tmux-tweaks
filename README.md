@@ -30,7 +30,9 @@ tmux
 ## Config
 The [conf/tmux.conf](../master/conf/tmux.conf) config file should work out of the box.
 #### User Config Options
-Register the plugin with the name spencer.
+Register the plugin with the name spencer.  
+The value of the `@spencer` option should be a tmux source-able file with the the extension ".theme". The `default.theme` attempts to reset things to factory
+settings. This is no where close ATM.
 
 `set -g @spencer 'spencer'`
 
