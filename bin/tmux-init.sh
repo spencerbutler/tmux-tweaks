@@ -8,11 +8,11 @@ repos[spencerbutler/tmux-tweaks]="$HOME/tmux-tweaks"
 repos[tmux-plugins/tpm]="$HOME/.tmux/plugins/tpm"
 
 have_tmux() {
-    command -v tmux 1>/dev/null
+    command tmux 1>/dev/null
 }
 
 have_git() {
-    command -v git 1>/dev/null
+    command git 1>/dev/null
 }
 
 get_linux_ver() {
@@ -29,7 +29,7 @@ install_tmux() {
   echo "You don't have the tmux, installing."
   if [[ $linux_name == centos  ]]; then
     if [[ $linux_maj -lt 8 ]]; then
-      echo "CentOS $linux_maj is old and comes with tmux 1.8"
+      echo "CentOS $linux_maj is old and comes with tmux < 1.9."
       echo "You should install the IUS repo"
       echo "SHELL$: sudo yum install https://repo.ius.io/ius-release-el$linux_maj.rpm"
       echo "SHELL$: sudo yum install tmux2"
@@ -113,8 +113,6 @@ main() {
       fi
     done
 
-    cd ${repos[spencerbutler/tmux-tweaks]} && \
-        git checkout away && git pull || echo "WTF, couldn't cd to ${repos[spencerbutler/tmux-tweaks]}" 
     cd $HOME
     if [ ! -f $HOME/.tmux.conf ]; then
         ln -s ${repos[spencerbutler/tmux-tweaks]}/conf/tmux.conf .tmux.conf
