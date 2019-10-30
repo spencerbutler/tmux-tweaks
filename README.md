@@ -11,12 +11,13 @@ The install script will try and install tmux if it's not available. Tmux before 
 in this plugin. It is highly recommended to use the most recent version of tmux available.
 
 ## Install 
-This assumes you don't already have a $HOME/.tmux.conf. If you do, you'll need to move it out of the way to use this plugin.
+This assumes you don't already have a $HOME/.tmux.conf. If you do, you'll need to move it out of the way
+or just merge in the relevant options to your config.
 ___
 ### Install Script
 The [bin/tmux-init.sh](../master/bin/tmux-init.sh) helper script has been tested to install (if missing)
 git and tmux, this [repo](../../), the [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) along with the awesome plugins [Resurrect](https://github.com/tmux-plugins/tmux-resurrect) and [Continuum](https://github.com/tmux-plugins/tmux-continuum) 
--- successfully on Debian, Raspbian, FreeBSD, OpenBSD and CentOS 7.  
+-- successfully on Debian, Raspbian, FreeBSD, OpenBSD and CentOS 7. (You don't need the `Git Clone` step if you use the script.)
 
 #### Linux
 `wget -qO- https://raw.githubusercontent.com/spencerbutler/tmux-tweaks/master/bin/tmux-init.sh | bash -s`  
@@ -43,8 +44,7 @@ The [conf/tmux.conf](../master/conf/tmux.conf) config file should work out of th
 
 #### User Config Options
 Register the plugin with the name spencer.  
-The value of the `@spencer` option should be a tmux source-able file with the the extension ".theme". The `default.theme` attempts to reset things to factory
-settings. This is no where close ATM.
+The value of the `@spencer` option should be a tmux source-able file with the the extension ".theme". The `default.theme` attempts to reset all key-bindings and options to factory settings. (This allows for a cleaner path to switch themes on the fly.)
 
 `set -g @spencer 'spencer'`
 
