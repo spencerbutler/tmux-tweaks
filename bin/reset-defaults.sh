@@ -1,6 +1,8 @@
 #!/bin/sh
 # Spencer Butler <github@crooked.app>
 # PITA defaults
+# FIXME
+# take 5m and fix the random files all over the damn system
 
 # a single-quote `'`           needs double-quotes `"'"`
 # a semi-colon   `;`           needs a backslash   `\;`
