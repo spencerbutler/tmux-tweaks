@@ -11,7 +11,7 @@ default_theme='default'
 colour_option="@tweaks_theme_colours"
 default_colour='first'
 icon_option="@tweaks_theme_icons"
-default_icon="@tweaks_theme_colours"
+default_icon="default"
 
 get_tmux_option() {
   local option="$1"
