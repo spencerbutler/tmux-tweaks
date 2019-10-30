@@ -1,0 +1,9 @@
+
+win_sep="❎"
+left_sep=''
+right_sep=''
+prefix_icons='❌,•'
+date_format='%a %b %d'
+#left_sep='ᐒ'
+#right_sep='ᑄ'
+zoom_icons='*Z*,*'
