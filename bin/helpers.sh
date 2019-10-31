@@ -23,8 +23,13 @@ set_previous() {
   tmux source "${CACHE_DIR}/set_previous_options_${SESSION_CREATED_DATE}"
 }
 
+set_factory_defaults() {
+  tmux source $RESET
+}
+
 save_to_unset() {
   local file="${CACHE_DIR}/unset_previous_options_${SESSION_CREATED_DATE}"
+  [ -f $file ] && mv "$file" "$file_$(date +%s)"
   tmux list-keys |\
     sed -Ee "s/(.*) ([$single]) (.*)/\1  '\2' \3 /g" \
       -e 's/(.*) (;) (.*)/\1 \\\2 \3/g' \
@@ -47,6 +52,7 @@ save_to_unset() {
 
 save_to_set() {
   local file="${CACHE_DIR}/set_previous_options_${SESSION_CREATED_DATE}"
+  [ -f $file ] && mv "$file" "$file_$(date +%s)"
   tmux list-keys |\
     sed -Ee "s/(.*) ([$single]) (.*)/\1  '\2' \3 /g" \
       -e 's/(.*) (;) (.*)/\1 \\\2 \3/g' \
