@@ -3,6 +3,7 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 THEMES="${CURRENT_DIR}/themes/themes.tmux"
+HELPERS="${CURRENT_DIR}/bin/helpers.sh"
 
 theme_option="@tweaks_theme"
 default_theme='default'

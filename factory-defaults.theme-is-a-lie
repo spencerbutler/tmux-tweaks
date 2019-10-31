@@ -250,12 +250,12 @@ bind-key    -T root         WheelDownStatus   next-window
 
 # Session Options
 set -s buffer-limit 50
-set -s command-alias[0] "split-pane=split-window"
-set -s command-alias[1] "splitp=split-window"
-set -s command-alias[2] "server-info=show-messages -JT"
-set -s command-alias[3] "info=show-messages -JT"
-set -s command-alias[4] "choose-window=choose-tree -w"
-set -s command-alias[5] "choose-session=choose-tree -s"
+# set -s command-alias[0] "split-pane=split-window"
+# set -s command-alias[1] "splitp=split-window"
+# set -s command-alias[2] "server-info=show-messages -JT"
+# set -s command-alias[3] "info=show-messages -JT"
+# set -s command-alias[4] "choose-window=choose-tree -w"
+# set -s command-alias[5] "choose-session=choose-tree -s"
 set -s default-terminal "screen"
 set -s escape-time 500
 set -s exit-empty on
@@ -306,14 +306,14 @@ set -g status-right " \"#{=21:pane_title}\" %H:%M %d-%b-%y"
 set -g status-right-length 40
 set -g status-right-style default
 set -g status-style fg=black,bg=green
-set -g update-environment[0] "DISPLAY"
-set -g update-environment[1] "KRB5CCNAME"
-set -g update-environment[2] "SSH_ASKPASS"
-set -g update-environment[3] "SSH_AUTH_SOCK"
-set -g update-environment[4] "SSH_AGENT_PID"
-set -g update-environment[5] "SSH_CONNECTION"
-set -g update-environment[6] "WINDOWID"
-set -g update-environment[7] "XAUTHORITY"
+# set -g update-environment[0] "DISPLAY"
+# set -g update-environment[1] "KRB5CCNAME"
+# set -g update-environment[2] "SSH_ASKPASS"
+# set -g update-environment[3] "SSH_AUTH_SOCK"
+# set -g update-environment[4] "SSH_AGENT_PID"
+# set -g update-environment[5] "SSH_CONNECTION"
+# set -g update-environment[6] "WINDOWID"
+# set -g update-environment[7] "XAUTHORITY"
 set -g visual-activity off
 set -g visual-bell off
 set -g visual-silence off
