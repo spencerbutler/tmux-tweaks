@@ -1,7 +1,7 @@
-
+date_format='%a %b %d'
+time_format='%H:%M:%S'
+prefix_icons='**,-'
 left_sep='>'
 right_sep='<'
-win_sep='|
-prefix_icons='**,-'
-date_format='%a %b %d'
 zoom_icons='*Z*,*'
+win_sep='|'

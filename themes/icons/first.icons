@@ -1,7 +1,0 @@
-
-left_sep=''
-right_sep=''
-win_sep='❎'
-prefix_icons='❌,•'
-date_format='%a %b %d'
-zoom_icons='*Z*,*'

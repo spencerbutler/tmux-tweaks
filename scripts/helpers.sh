@@ -3,6 +3,11 @@
 # these chars    `?$&./#%!"<~` need single-quote   `'?'`
 single='?$&./#%!~"'
 
+reset_tmux_config() {
+    set_factory_defaults
+    tmux source ~/.tmux.conf
+}
+
 have_cache_dir() {
   [ -d $CACHE_DIR ]
 }
@@ -12,7 +17,7 @@ make_cache_dir() {
 }
 
 make_temp_cache_dir() {
-  mktemp --directory --tmpdir tmux_tweaks_XXXX 1>/dev/null
+  mktemp --directory --tmpdir tmux_tweaks_XXXX &>/dev/null
 }
 
 unset_previous() {
@@ -24,12 +29,12 @@ set_previous() {
 }
 
 set_factory_defaults() {
-  tmux source $RESET
+  tmux source "${actions_dir}/reset-tmux-config.action" 
 }
 
 save_to_unset() {
   local file="${CACHE_DIR}/unset_previous_options_${SESSION_CREATED_DATE}"
-  [ -f $file ] && mv "$file" "$file_$(date +%s)"
+  [ -f $file ] && mv "$file" "${file}_$(date +%s)"
   tmux list-keys |\
     sed -Ee "s/(.*) ([$single]) (.*)/\1  '\2' \3 /g" \
       -e 's/(.*) (;) (.*)/\1 \\\2 \3/g' \
@@ -38,11 +43,11 @@ save_to_unset() {
       -e "s/[[:space:]](#[[:alpha:]])[[:space:]]/'\1'/g" \
       -e 's/^/un/g' -e 's/-r//g' |\
     awk '{print $1,$2,$3,$4}' >> "$file"
-  tmux show-environment -gs |\
-    sed -e 's/; export.*$//g' \
-      -e "s/^/set-environment -gu /g" |\
-    tr '=' ' ' |\
-    awk '{print $1,$2,$3}' >> "$file"
+  #tmux show-environment -gs |\
+  #  sed -e 's/; export.*$//g' \
+  #    -e "s/^/set-environment -gu /g" |\
+  #  tr '=' ' ' |\
+  #  awk '{print $1,$2,$3}' >> "$file"
   tmux show-options | sed -e "s/^/set-option -u /g" | awk '{print $1,$2,$3}' >> "$file"
   tmux show-options -s | sed -e "s/^/set-option -su /g" | awk '{print $1,$2,$3}' >> "$file"
   tmux show-options -g | sed -e "s/^/set-option -gu /g" | awk '{print $1,$2,$3}' >> "$file"

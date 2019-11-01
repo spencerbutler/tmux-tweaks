@@ -1,17 +1,28 @@
 #!/usr/bin/env bash
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 themes_dir="${CURRENT_DIR}"
 colours_dir="${CURRENT_DIR}/colours"
 icons_dir="${CURRENT_DIR}/icons"
 
+scripts_dir="${CURRENT_DIR}/../scripts"
+actions_dir="${CURRENT_DIR}/../actions"
+source "${scripts_dir}/helpers.sh"
+
 theme_option="@tweaks_theme"
-default_theme='spencer'
+default_theme='tmux-tweaks'
+
 colour_option="@tweaks_theme_colours"
-default_colour='baby_blues'
+default_colour='tmux-tweaks'
+
 icon_option="@tweaks_theme_icons"
-default_icon="baby_blues"
+default_icon="tmux-tweaks"
+
+is_opt_set() {
+  local opt=$1
+  local val=$(tmux show-option -gqv "$opt")
+  [ -z $val ] && return 1 || return 0
+}
 
 get_tmux_option() {
   local option="$1"
@@ -30,16 +41,9 @@ main() {
   local colour="$(get_tmux_option "$colour_option" "$default_colour")"
   local icon="$(get_tmux_option "$icon_option" "$default_icon")"
 
-  if [ $theme == factory-defaults ]; then
-    #tmux run-shell "${CURRENT_DIR}/../bin/reset-defaults.sh unset"
+  if [ $theme == factory-settings ]; then
     tmux source-file "${themes_dir}/${theme}.theme"
   else
-    if [ -f "${themes_dir}/${theme}.theme" ]; then
-      tmux source-file "${themes_dir}/${theme}.theme"
-        else
-      tmux source-file "${themes_dir}/${default_theme}.theme"
-    fi
-
     if [ -f "${colours_dir}/${colour}.colours" ]; then
       tmux source-file "${colours_dir}/${colour}.colours"
     else
@@ -50,6 +54,12 @@ main() {
       tmux source-file "${icons_dir}/${icon}.icons"
     else
       tmux source-file "${icons_dir}/${default_icon}.icons"
+    fi
+
+    if [ -f "${themes_dir}/${theme}.theme" ]; then
+      tmux source-file "${themes_dir}/${theme}.theme"
+        else
+      tmux source-file "${themes_dir}/${default_theme}.theme"
     fi
   fi
 }

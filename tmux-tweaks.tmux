@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+themes_dir="${CURRENT_DIR}/themes"
+scripts_dir="${CURRENT_DIR}/scripts"
+colours_dir="${CURRENT_DIR}/colours"
+icons_dir="${CURRENT_DIR}/icons"
+actions_dir="${CURRENT_DIR}/actions"
 
-THEMES="${CURRENT_DIR}/themes/themes.tmux"
-HELPERS="${CURRENT_DIR}/bin/helpers.sh"
+source "${scripts_dir}/helpers.sh"
+tmux bind u source-file "${actions_dir}/url.action"
 
 theme_option="@tweaks_theme"
-default_theme='default'
-colour_option="@tweaks_theme_colours"
-default_colour='first'
-icon_option="@tweaks_theme_icons"
-default_icon="@tweaks_theme_colours"
-
+default_theme='tmux-tweaks'
 
 is_opt_set() {
   local opt=$1
@@ -33,7 +33,7 @@ get_tmux_option() {
 
 main() {
   if is_opt_set "$theme_option"; then
-    source "$THEMES"
+    tmux run-shell "${themes_dir}/themes.tmux"
   fi
 }
 
