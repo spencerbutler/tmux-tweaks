@@ -1,0 +1,8 @@
+date_format='%a %b %d'
+time_format='%H:%M:%S'
+prefix_icons='❌,•'
+win_sep='|'
+left_sep='ᐒ'
+right_sep='ᑄ'
+zoom_icons='*Z*,*'
+win_sep='ᑝ'
