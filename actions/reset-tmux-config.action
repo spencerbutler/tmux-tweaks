@@ -1,0 +1,4 @@
+source ~/.tmux.conf
+set-option display-time 3000
+display 'Reset Complete!!'
+set-option -u display-time

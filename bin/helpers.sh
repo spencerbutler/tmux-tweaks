@@ -59,10 +59,11 @@ save_to_set() {
       -e "s/(.*[[:space:]]+ if-shell -F ).*(#\{.*\}) (".*") (".*")/\2 '\2' '\3' '\4'/g" \
       -e "s/[[:space:]](#[[:alpha:]])[[:space:]]/'\1'/g" \
       -e 's/(.*) ('\'') (.*)/\1 \"\2\" \3/g' >> "$file"
-  tmux show-environment -gs |\
-    sed -e 's/; export.*$//g' \
-      -e "s/^/set-environment -g /g" |\
-    tr '=' ' ' >> "$file"
+  # I don't think we want to do this
+  #tmux show-environment -gs |\
+  #  sed -e 's/; export.*$//g' \
+  #    -e "s/^/set-environment -g /g" |\
+  #  tr '=' ' ' >> "$file"
   tmux show-options | sed -e "s/^/set-option /g" >> "$file"
   tmux show-options -s | sed -e "s/^/set-option -s /g" >> "$file"
   tmux show-options -g | sed -e "s/^/set-option -g /g" >> "$file"

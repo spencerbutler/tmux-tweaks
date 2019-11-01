@@ -75,58 +75,12 @@ bind-key -r -T prefix C-Left           resize-pane -L
 bind-key -r -T prefix C-Right          resize-pane -R
 bind-key    -T root   MouseDown1Pane   select-pane -t = \; send-keys -M
 bind-key    -T root   MouseDown1Status select-window -t =
-#{mouse_any_flag} '#{mouse_any_flag}' '"select-pane -t=; send-keys -M" "select-pane' '-mt="'
-#{mouse_any_flag} '#{mouse_any_flag}' '"if -Ft= "#{pane_in_mode}" "copy-mode -M" "send-keys -M"" "copy-mode' '-M"'
-bind-key    -T root   MouseDrag1Border resize-pane -M
-#{mouse_any_flag} '#{mouse_any_flag}' '"send-keys -M" "if -Ft= "#{pane_in_mode}" "send-keys -M" "copy-mode' '-et=""'
+####{mouse_any_flag} '#{mouse_any_flag}' '"select-pane -t=; send-keys -M" "select-pane' '-mt="'
+####{mouse_any_flag} '#{mouse_any_flag}' '"if -Ft= "#{pane_in_mode}" "copy-mode -M" "send-keys -M"" "copy-mode' '-M"'
+###bind-key    -T root   MouseDrag1Border resize-pane -M
+####{mouse_any_flag} '#{mouse_any_flag}' '"send-keys -M" "if -Ft= "#{pane_in_mode}" "send-keys -M" "copy-mode' '-et=""'
 bind-key    -T root   WheelUpStatus    previous-window
 bind-key    -T root   WheelDownStatus  next-window
-set-environment -g BROWSER "/home/spencer/firefox/firefox/firefox-bin"
-set-environment -g COLORTERM "truecolor"
-set-environment -g DBUS_SESSION_BUS_ADDRESS "unix:path /run/user/1000/bus"
-set-environment -g DESKTOP_SESSION "lightdm-xsession"
-set-environment -g DISPLAY ":0.0"
-set-environment -g EDITOR "vim"
-set-environment -g GDMSESSION "lightdm-xsession"
-set-environment -g GLADE_CATALOG_PATH ":"
-set-environment -g GLADE_MODULE_PATH ":"
-set-environment -g GLADE_PIXMAP_PATH ":"
-set-environment -g GPG_AGENT_INFO "/run/user/1000/gnupg/S.gpg-agent:0:1"
-set-environment -g GTK_MODULES "gail:atk-bridge"
-set-environment -g HOME "/home/spencer"
-set-environment -g LANG "en_US.utf8"
-set-environment -g LOGNAME "spencer"
-set-environment -g MAKEFLAGS "-j4"
-set-environment -g OLDPWD "/home/spencer/tmux-tweaks"
-set-environment -g PATH "/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/spencer/bin:/usr/sbin:/sbin"
-set-environment -g PS1 "\\[\\033]0; \\u@\\h:\\w\\007\\]\\[\\033[01;32m\\]\\u@\\h \\[\\033[01;34m\\]\\w \\[\\033[31m\\]\`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\\\\\\*\\ \\(.+\\)\$/\\(\\\\\\\\\\1\\)\\ /\`\\[\\033[35m\\]\$\\[\\033[00m\\] "
-set-environment -g PWD "/home/spencer"
-set-environment -g QT_ACCESSIBILITY "1"
-set-environment -g SESSION_MANAGER "local/tinker:@/tmp/.ICE-unix/1618,unix/tinker:/tmp/.ICE-unix/1618"
-set-environment -g SHELL "/bin/bash"
-set-environment -g SHLVL "1"
-set-environment -g SSH_AGENT_PID "1608"
-set-environment -g SSH_AUTH_SOCK "/run/user/1000/keyring/ssh"
-set-environment -g TERM "xterm-256color"
-set-environment -g USER "spencer"
-set-environment -g VTE_VERSION "4601"
-set-environment -g WINDOWID "60817411"
-set-environment -g XAUTHORITY "/home/spencer/.Xauthority"
-set-environment -g XDG_CONFIG_DIRS "/etc/xdg"
-set-environment -g XDG_CURRENT_DESKTOP "XFCE"
-set-environment -g XDG_DATA_DIRS "/usr/share/xfce4:/home/spencer/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/usr/share"
-set-environment -g XDG_GREETER_DATA_DIR "/var/lib/lightdm/data/spencer"
-set-environment -g XDG_MENU_PREFIX "xfce-"
-set-environment -g XDG_RUNTIME_DIR "/run/user/1000"
-set-environment -g XDG_SEAT "seat0"
-set-environment -g XDG_SEAT_PATH "/org/freedesktop/DisplayManager/Seat0"
-set-environment -g XDG_SESSION_CLASS "user"
-set-environment -g XDG_SESSION_DESKTOP "lightdm-xsession"
-set-environment -g XDG_SESSION_ID "3"
-set-environment -g XDG_SESSION_PATH "/org/freedesktop/DisplayManager/Session0"
-set-environment -g XDG_SESSION_TYPE "x11"
-set-environment -g XDG_VTNR "7"
-set-environment -g _ "/usr/bin/tmux"
 set-option -s buffer-limit 20
 set-option -s default-terminal "screen"
 set-option -s escape-time 500
