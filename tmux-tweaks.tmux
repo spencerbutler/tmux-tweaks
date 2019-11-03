@@ -9,6 +9,9 @@ actions_dir="${CURRENT_DIR}/actions"
 
 source "${scripts_dir}/helpers.sh"
 tmux bind u source-file "${actions_dir}/url.action"
+tmux bind e run-shell '~/.tmux/plugins/tmux-tweaks/export/export.tmux set-export'
+tmux bind E run-shell '~/.tmux/plugins/tmux-tweaks/export/export.tmux export'
+tmux bind C-E run-shell '~/.tmux/plugins/tmux-tweaks/export/export.tmux load-theme'
 
 theme_option="@tweaks_theme"
 default_theme='tmux-tweaks'
