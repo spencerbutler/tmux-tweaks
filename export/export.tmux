@@ -36,6 +36,7 @@ main() {
   fi
 }
 
+main
 case $1 in
   set-export)
     tmux command-prompt -p "What is the name of your theme?" "set -g @tweaks_export %1"
@@ -54,6 +55,3 @@ case $1 in
     ;;
   *) main ;;
 esac
-  
-
-#main
