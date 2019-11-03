@@ -26,7 +26,7 @@ export_theme() {
   echo "# tmux-tweaks exported this file on $(date)" > "$export_file"
 
   for val in "${vals[@]}"; do
-    if [[ $val =~ clock ]]; then
+    if [[ $val =~ (window|clock|(pane-border|mode)-style) ]]; then
       echo "set-window-option $val \"$(tmux show-window-option -gv $val)\"" >> "$export_file"
     else
       echo "set-option $val \"$(tmux show-option -gv $val)\"" >> "$export_file"
@@ -34,6 +34,7 @@ export_theme() {
   done
 
   echo "Your theme has been saved to $export_file"
+  echo "Press Enter to continue."
   echo " "
   cat "$export_file"
 }
