@@ -1,0 +1,65 @@
+l0=
+l1=
+l2= 
+l3= 
+l4= 
+l5= 
+l6= 
+l7= 
+l8= 
+l9= 
+l10= 
+r0= 
+r1= 
+r2= 
+r3= 
+r4= 
+r5= 
+r6= 
+r7= 
+r8= 
+r9= 
+r10=
+e445=   
+e438=   
+e43b=   
+e439=   
+f262=
+e444=   
+e443=   
+f0a4=   
+f0a5=   
+f0b2=   
+f0ca=   
+f100=   
+f10d=   
+f10e=   
+f123=   
+f192=   
+f1db=   
+f252= 
+e3f3=   
+e427=   
+
+foo5="      "
+bar="#[bg=colour200,dim,fg=colour232,bold] $foo5 #[bg=default,fg=default]"
+
+foo="#[bg=colour242,dim,fg=colour232,bold] FOO #[bg=default,nodim,fg=default,nobold]"
+date_format='%a %b %d'
+time_format="%H:%M"
+#time_format=" #[bg=green,dim,fg=default,bold]%H:%M#[fg=default,nobold,bg=default]:#[fg=color200,dim,bg=color200,dim]%S#[fg=default,nodim,bg=default,nodim]"
+prefix_icons=$f192,$f1db
+left_sep=$f0a4
+right_sep=$f0a5
+#zoom_icons=$f262,
+win_sep=$f10e
+continuum_status=$f252
+continuum_status_alert=$e3f3
+command_prompt="::$f0b2 $f0a4"
+
+#if "[ $(tmux display -p '#I') -eq 0 ]" "display -p $l0"
+#if "[ $(tmux display -p '#I') -eq 1 ]" "set-env -g circle_window $l1" #"set-env -g circle_window **"
+#if "[ $(tmux display -p '#I') -eq 2 ]" "set-env -g circle_window $l2" #"set-env -g circle_window **"
+
+circle_window=#(tmux if-shell '[ $(tmux display -p '#I') -eq 0 ]' 'display -p $l0')
+

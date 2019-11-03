@@ -8,6 +8,7 @@ icons_dir="${CURRENT_DIR}/icons"
 scripts_dir="${CURRENT_DIR}/../scripts"
 actions_dir="${CURRENT_DIR}/../actions"
 source "${scripts_dir}/helpers.sh"
+circle_window_script="${scripts_dir}/circle_window.sh"
 
 theme_option="@tweaks_theme"
 default_theme='tmux-tweaks'
