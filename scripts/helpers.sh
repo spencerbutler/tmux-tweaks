@@ -3,9 +3,54 @@
 # these chars    `?$&./#%!"<~` need single-quote   `'?'`
 single='?$&./#%!~"'
 
+have_export() {
+  export_var="$(tmux show -gqv @tweaks_export)"
+  ! [ -z $export_var ] && export_file="${themes_dir}/${export_var}.theme"
+}
+
+have_export_file() {
+  [ -f $export_file ]
+}
+
+send_to_export() {
+  export_theme "$export_file"
+}
+
+send_to_load() {
+  tmux source-file "$export_file"
+  tmux display -F '#{@tweaks_export} was loaded!!'
+}
+
+export_theme() {
+  vals=(status-interval status-style status-left-style status-left-length status-left status-right-style status-right-length status-right window-status-format window-status-current-format window-status-current-style window-status-activity-style window-status-separator status-justify pane-border-style display-panes-colour display-panes-active-colour clock-mode-colour clock-mode-style message-style message-command-style mode-style)
+  echo "# tmux-tweaks exported this file on $(date)" > "$export_file"
+
+  for val in "${vals[@]}"; do
+    if [[ $val =~ (window|clock|(pane-border|mode)-style) ]]; then
+      echo "set-window-option $val \"$(tmux show-window-option -gv $val)\"" >> "$export_file"
+    else
+      echo "set-option $val \"$(tmux show-option -gv $val)\"" >> "$export_file"
+    fi
+  done
+
+  echo "Your theme has been saved to $export_file"
+  echo "Press Enter to continue."
+  echo " "
+  cat "$export_file"
+}
+
+
 reset_tmux_config() {
     set_factory_defaults
     tmux source ~/.tmux.conf
+}
+
+have_dir() {
+  [ -d $1 ]
+}
+
+make_dir() {
+  [ ! -d $1 ] && mkdir -p "$1"
 }
 
 have_cache_dir() {

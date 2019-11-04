@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Spencer's tmux-tweaks install helper
-# Spencer Butler <git@crooked.app>
+# Spencer's tmux-tweaks installer
+# Spencer Butler <tmux-tweaks@crooked.app>
 
 declare -A repos
 giturl='https://github.com'
-repos[spencerbutler/tmux-tweaks]="$HOME/tmux-tweaks"
+repos[spencerbutler/tmux-tweaks]="$HOME/.tmux/plugins/tmux-tweaks"
 repos[tmux-plugins/tpm]="$HOME/.tmux/plugins/tpm"
 
 have_tmux() {
@@ -23,6 +23,11 @@ get_linux_ver() {
         linux_name=Linux
         linux_maj=unknown
     fi
+}
+
+install_tpm_plugins() {
+  tmux new-session -d -n test  -s tmux_tweaks_init 'tmux run ~/.tmux/plugins/tpm/bindings/install_plugins'
+  tmux kill-session -t tmux_tweaks_init
 }
 
 install_tmux() {
@@ -120,6 +125,7 @@ main() {
         echo "You alread have a $HOME/.tmux.conf! What to do, Yo?"
     fi
 
+    install_tpm_plugins
     echo -e "\nYou are ready to tmux shit up."
   else
     echo "We already tried to install git and it didn't work out. Please fix something."
