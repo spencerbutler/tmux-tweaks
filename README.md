@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/spencerbutler/tmux-tweaks.svg?branch=master)](https://travis-ci.org/spencerbutler/tmux-tweaks)
 # tmux-tweaks
 ## Prerequisites
 ### Bash Version 4.2 (or higher)
