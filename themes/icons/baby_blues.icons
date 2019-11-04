@@ -1,7 +1,16 @@
+f053=   
+f054=   
+f07d=   
+f07e=   
+f08b=   
+f077=   
+f078=   
+
 date_format='%a %b %d'
 time_format='%H:%M:%S'
-prefix_icons='X,•'
-left_sep=''
-right_sep=''
-zoom_icons='-,*'
-win_sep='❎'
+prefix_icons=$f078,$f077
+left_sep=$f054
+right_sep=$f053
+zoom_icons=$f07d,
+win_sep=$f08b
+

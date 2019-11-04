@@ -1,8 +1,21 @@
+e445=   
+e438=   
+e43b=   
+e439=   
+f262=
+e444=   
+e443=   
+f04b=   
+f037=   
+f039=   
+f077=   
+f078=   
+
 date_format='%a %b %d'
 time_format='%H:%M:%S'
-prefix_icons='❌,•'
-win_sep='|'
-left_sep='ᐒ'
-right_sep='ᑄ'
-zoom_icons='*Z*,*'
-win_sep='ᑝ'
+prefix_icons='X,•'
+left_sep=$e43b$e439
+right_sep=$e439$e43b
+zoom_icons=$f262,
+win_sep=$f039
+

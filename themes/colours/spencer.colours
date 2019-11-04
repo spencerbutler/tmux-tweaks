@@ -1,11 +1,11 @@
-theme_l1=colour165
+theme_l1=colour238
 theme_r1=colour233
 
-theme_l2=colour171 
-theme_r2=colour165
+theme_l2=colour239
+theme_r2=colour244
 
-theme_l3=colour165
-theme_r3=colour171
+theme_l3=colour241
+theme_r3=colour236
 
 theme_l4=$theme_l1
 theme_r4=$theme_r1
@@ -25,6 +25,5 @@ theme_window_alert_fg=$theme_l1
 theme_pane_border_bg=colour232
 theme_pane_border_fg=colour232
 
-theme_pane_border_bg_a=colour232
-theme_pane_border_fg_a=colour200
-
+theme_pane_border_bg_a=$theme_r1
+theme_pane_border_fg_a=$theme_r1

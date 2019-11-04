@@ -4,55 +4,70 @@
 
 # Status update interval
 set -g status-interval 1
-
-# Basic status bar colors
-set -g status-style fg=$theme_second,bg=$theme_pri
-
-# Left side of status bar
-set -g status-left-style bg=$theme_pri,fg=$theme_second
-set -g status-left-length 41
-set -g status-left "#h #[fg=$theme_pri,bg=$theme_ter,bold] #S #[fg=$theme_ter,bg=$theme_second,nobold]$left_sep#[fg=$theme_pri,bg=$theme_second] #{continuum_status} #[fg=$theme_second,bg=$theme_third]$left_sep#[fg=$theme_second,bg=$theme_third] #I:#P #[fg=$theme_third,bg=$theme_pri,nobold]$left_sep #{?client_prefix,$prefix_icons}"
-
-# Right side of status bar
-set -g status-right-style bg=$theme_pri,fg=$theme_wtf
+set -g display-panes-time 1000
+set -g display-time 500
+set -g status-left-length 50
 set -g status-right-length 150
-set -g status-right "#[fg=$theme_third,bg=$theme_pri]$right_sep#[fg=$theme_second,bg=$theme_third] #[fg=$theme_second,bg=$theme_third]$right_sep#[fg=$theme_pri,bg=$theme_second] $date_format #[fg=$theme_ter,bg=$theme_second]$right_sep#[fg=$theme_pri,bg=$theme_ter,bold] $time_format "
-
-# Window status
-set -g window-status-format "  #I:#W #{?window_zoomed_flag,$zoom_icons} "
-set -g window-status-current-format "#[fg=$theme_pri,bg=$theme_status_bg]$left_sep#[fg=$theme_fg_w_current,nobold] #I:#W #{?window_zoomed_flag,$zoom_icons} #[fg=$theme_pri,bg=$theme_status_bg,nobold]$right_sep"
-
-# Current window status
-set -g window-status-current-style bg=$theme_ter,fg=$theme_third
-
-# Window with activity status
-set -g window-status-activity-style bg=$theme_pri,fg=$theme_wactive
-
-# Window separator
-set -g window-status-separator $win_sep
-
-# Window status alignment
 set -g status-justify centre
-
-# Pane border
-set -g pane-border-style bg=default,fg=$theme_pane_border
-
-# Active pane border
-set -g pane-active-border-style bg=default,fg=$theme_ter
-
-# Pane number indicator
-set -g display-panes-colour $theme_pri
-set -g display-panes-active-colour $theme_wactive
-
-# Clock mode
-set -g clock-mode-colour $theme_ter
 set -g clock-mode-style 24
 
+# Basic status bar colors
+set -g status-style bg=$theme_l3,fg=$theme_r3
+
+# Left side of status bar
+set -g status-left-style bg=$theme_l1,fg=$theme_r1
+set -g status-left \
+"\
+#[bg=$theme_l1,fg=$theme_r1,bold] \
+#h $right_sep #{?continuum_status,$continuum_status #{continuum_status} ,$continuum_status_alert  }\
+$left_sep#[bg=$theme_l2,fg=$theme_r2]\
+ #S #[bg=$theme_l3,fg=$theme_r3]\
+$right_sep$left_sep\
+#[bg=$theme_l5,fg=$theme_r5] \
+#I:#P HI:#(/home/spencer/.tmux/plugins/tmux-tweaks/scripts/circle_windows.sh) $left_sep#[bg=$theme_l6,fg=$theme_r1]  \
+#{?client_prefix,$prefix_icons}"
+##########################################################
+
+# Right side of status bar
+set -g status-right-style bg=$theme_r1,fg=$theme_l1
+set -g status-right \
+"\
+$left_sep$right_sep $date_format\
+#[bg=$theme_r1,fg=$theme_l3] \
+$left_sep\
+#[bg=$theme_r1,fg=$theme_l2,bold]\
+#[bg=$theme_r1,fg=$theme_l1,bold]$right_sep $time_format "
+##########################################################
+ 
+# Window status
+set -g window-status-format " #{?window_zoomed_flag,$zoom_icons} #I:#W "
+set -g window-status-current-format "#[bg=$theme_l2,fg=$theme_r1] #I:#W #{?window_zoomed_flag,$zoom_icons} "
+
+# Current window status
+set -g window-status-current-style bg=$theme_window_status_bg,fg=$theme_window_status_fg
+
+# Window with activity status
+set -g window-status-activity-style bg=$theme_window_alert_bg,fg=$theme_window_alert_fg
+
+# Pane border
+set -g pane-border-style bg=$theme_pane_border_bg,fg=$theme_pane_border_fg
+
+# Active pane border
+set -g pane-active-border-style bg=$theme_pane_border_bg_a,fg=$theme_pane_border_fg_a
+
+# Pane number indicator
+set -g display-panes-colour $theme_l1
+set -g display-panes-active-colour $theme_r1
+
+# Clock mode
+set -g clock-mode-colour $theme_l1
+
 # Message
-set -g message-style bg=$theme_ter,fg=$theme_pri
+set -g message-style bg=$theme_l3,fg=$theme_r1
 
 # Command message
-set -g message-command-style bg=$theme_pri,fg=$theme_ter
+set -g message-command-style bg=$theme_l2,fg=$theme_r2
 
 # Mode
-set -g mode-style bg=$theme_ter,fg=$theme_mode_style
+set -g mode-style bg=$theme_l2,fg=$theme_r1
+
