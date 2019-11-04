@@ -1,10 +1,12 @@
 
 
-**Describe the bug**
+**Describe The Bug**  
+A brief description of the bug.
 
-**To Reproduce**
+**To Reproduce**  
+Tell us how we can reproduce this bug.
 
-**Screenshots**
+**Screenshots**  
 If applicable, add screenshots to help explain your problem.
 
 **Operating System**  
