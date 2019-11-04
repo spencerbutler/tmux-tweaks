@@ -20,14 +20,14 @@ git and tmux, this [repo](../../), the [Tmux Plugin Manager](https://github.com/
 -- successfully on Debian, Raspbian, FreeBSD, OpenBSD and CentOS 7. (You don't need the `Git Clone` step if you use the script.)
 
 #### Linux
-`wget -qO- https://raw.githubusercontent.com/spencerbutler/tmux-tweaks/master/bin/tmux-init.sh | bash -s`  
+`wget -qO- https://raw.githubusercontent.com/spencerbutler/tmux-tweaks/master/scripts/tmux-init.sh | bash -s`  
 or  
-`curl -so- https://raw.githubusercontent.com/spencerbutler/tmux-tweaks/master/bin/tmux-init.sh | bash -s`
+`curl -so- https://raw.githubusercontent.com/spencerbutler/tmux-tweaks/master/scripts/tmux-init.sh | bash -s`
 
 #### OpenBSD
-`ftp -o- https://raw.githubusercontent.com/spencerbutler/tmux-tweaks/master/bin/tmux-init.sh | bash -s`
+`ftp -o- https://raw.githubusercontent.com/spencerbutler/tmux-tweaks/master/scripts/tmux-init.sh | bash -s`
 #### FreeBSD
-`fetch -o- https://raw.githubusercontent.com/spencerbutler/tmux-tweaks/master/bin/tmux-init.sh | bash -s`
+`fetch -o- https://raw.githubusercontent.com/spencerbutler/tmux-tweaks/master/scripts/tmux-init.sh | bash -s`
 
 ---
 ### Git Clone
