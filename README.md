@@ -5,10 +5,11 @@
 [ $BASH_VERSINFO -ge 5 ] || { [ $BASH_VERSINFO -eq 4 ] && [ ${BASH_VERSINFO[1]} -ge 2 ]; } && 
 echo $BASH_VERSION is OK. || echo $BASH_VERSION is too old.
 ```
-### git (installer tries to install from packages if available)
+### git 
+The installer tries to install with your system's package manager.
 ### tmux 
-The install script will try and install tmux if it's not available. Tmux before 1.9 will not understand a lot of options used
-in this plugin. It is highly recommended to use the most recent version of tmux available.
+The installer tries to install with your system's package manager.  
+Tmux before 1.9 will not understand a lot of options used in this plugin. It is highly recommended to use the most recent version of tmux available.
 
 ## Install Methods
 ### Install Script
@@ -26,12 +27,12 @@ or
 #### FreeBSD
 `fetch -o- https://raw.githubusercontent.com/spencerbutler/tmux-tweaks/master/scripts/tmux-init.sh | bash -s`
 
-## [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
+### [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
 See [User Config Options](#user-config-options) for more options.
 ```
 set -g @plugin 'spencerbutler/tmux-tweaks'
 ```
-## Git Clone
+### Git Clone
 ```
 git clone https://github.com/spencerbutler/tmux-tweaks.git $HOME/.tmux/plugins/tmux-tweaks
 ```
@@ -40,12 +41,8 @@ Update the **end** of your $HOME/.tmux.conf
 run-shell -b $HOME/.tmux/plugins/tmux-tweaks/tmux-tweaks.tmux
 ```
 
-## Config
-The  config file should work out of the box.
-
 ## User Config Options
-### [conf/tmux.conf](conf/tmux.conf)
-Available for reference.
+### [conf/tmux.conf](conf/tmux.conf) Available for reference.
 ### Defaults
 ```
 set -g @plugin 'spencerbutler/tmux-tweaks'
@@ -60,6 +57,14 @@ The `@tweaks_` settings follow the directory structure of [tmux-tweaks](../../).
 - `@tweaks_theme_icons` 'ICON-NAME'` live in [themes/icons](/themes/icons)  
 
 You can set the `@tweaks_` options to any value (minus the file extension) that exist in the directories. 
+
+## Features *experimental*
+### Export Theme
+`prefix e` will prompt you to name your theme.  
+`prefix E` will write your theme to $HOME/..tmux/tmux-tweaks/local/export/themes/THEME-NAME.theme  
+`prefix C-e` will load THEME-NAME (defaults to the name of the THEME-NAME you just created.)  
+### Reset to Defaults
+`tmux set -g @tweaks_theme 'factory-settings'` will reset all options and variables to their default states.  
 
 ## Support
 ### Issues
