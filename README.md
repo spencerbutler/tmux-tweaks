@@ -1,12 +1,12 @@
 # tmux-tweaks
 ## Prerequisites
-Bash Version 4.2 (or higher)
+### Bash Version 4.2 (or higher)
 ```
 [ $BASH_VERSINFO -ge 5 ] || { [ $BASH_VERSINFO -eq 4 ] && [ ${BASH_VERSINFO[1]} -ge 2 ]; } && 
 echo $BASH_VERSION is OK. || echo $BASH_VERSION is too old.
 ```
-#### git (installer tries to install from packages if available)
-#### tmux 
+### git (installer tries to install from packages if available)
+### tmux 
 The install script will try and install tmux if it's not available. Tmux before 1.9 will not understand a lot of options used
 in this plugin. It is highly recommended to use the most recent version of tmux available.
 
