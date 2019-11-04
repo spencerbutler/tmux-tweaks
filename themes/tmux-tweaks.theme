@@ -28,7 +28,7 @@ $right_sep$left_sep\
 #{?client_prefix,$prefix_icons}"
 ##########################################################
 
-## Right side of status bar
+# Right side of status bar
 set -g status-right-style bg=$theme_r1,fg=$theme_l1
 set -g status-right \
 "\
@@ -41,19 +41,13 @@ $left_sep\
  
 # Window status
 set -g window-status-format " #{?window_zoomed_flag,$zoom_icons} #I:#W "
-set -g window-status-current-format "#[bg=$theme_l2,fg=$theme_r1] #I:#W #{?window_zoomed_flag,$zoom_icons} $f037"
-
+set -g window-status-current-format "#[bg=$theme_l2,fg=$theme_r1] #I:#W #{?window_zoomed_flag,$zoom_icons} "
 
 # Current window status
 set -g window-status-current-style bg=$theme_window_status_bg,fg=$theme_window_status_fg
 
 # Window with activity status
 set -g window-status-activity-style bg=$theme_window_alert_bg,fg=$theme_window_alert_fg
-
-# Window separator
-set -g window-status-separator $win_sep
-
-# Window status alignment
 
 # Pane border
 set -g pane-border-style bg=$theme_pane_border_bg,fg=$theme_pane_border_fg
@@ -76,3 +70,4 @@ set -g message-command-style bg=$theme_l2,fg=$theme_r2
 
 # Mode
 set -g mode-style bg=$theme_l2,fg=$theme_r1
+
