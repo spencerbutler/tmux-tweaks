@@ -15,7 +15,8 @@ Tmux before 1.9 will not understand a lot of options used in this plugin. It is 
 ### Install Script
 The [scripts/tmux-init.sh](scripts/tmux-init.sh) helper script has been tested to install (if missing)
 git and tmux, this [repo](../../), the [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) along with the awesome plugins [Resurrect](https://github.com/tmux-plugins/tmux-resurrect) and [Continuum](https://github.com/tmux-plugins/tmux-continuum) 
--- successfully on Debian, Raspbian, FreeBSD, OpenBSD and CentOS 7. (You don't need the `Git Clone` step if you use the script.)
+-- successfully on Debian, Raspbian, FreeBSD, OpenBSD and CentOS 7. (You don't need the `Git Clone` step if you use the script.)  
+The installer attempts to `ln -s $HOME/.tmux/plugins/tmux-tweaks/conf/tmux.conf`. If there is a file there, it will just let you know and move on. If you ***don't** use [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm), see the [Git Clone](#git-clone) section -- otherwise see the [TPM](#tpm) secion for more information.
 
 #### Linux
 `wget -qO- https://raw.githubusercontent.com/spencerbutler/tmux-tweaks/master/scripts/tmux-init.sh | bash -s`  
@@ -27,7 +28,8 @@ or
 #### FreeBSD
 `fetch -o- https://raw.githubusercontent.com/spencerbutler/tmux-tweaks/master/scripts/tmux-init.sh | bash -s`
 
-### [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
+### TPM
+[Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)  
 See [User Config Options](#user-config-options) for more options.
 ```
 set -g @plugin 'spencerbutler/tmux-tweaks'
