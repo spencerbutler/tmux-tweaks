@@ -10,7 +10,7 @@ icons_dir="${export}/icons"
 scripts_dir="${CURRENT_DIR}/../scripts"
 actions_dir="${CURRENT_DIR}/../actions"
 source "${scripts_dir}/helpers.sh"
-source "${scripts_dir}/helpers.sh"
+source "${scripts_dir}/export_helper.sh"
 
 is_opt_set() {
   local opt=$1
