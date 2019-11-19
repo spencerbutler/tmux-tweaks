@@ -24,7 +24,7 @@ $left_sep#[bg=$theme_l2,fg=$theme_r2]\
  #S #[bg=$theme_l3,fg=$theme_r3]\
 $right_sep$left_sep\
 #[bg=$theme_l5,fg=$theme_r5] \
-#I:#P HI:#(/home/spencer/.tmux/plugins/tmux-tweaks/scripts/circle_windows.sh) $left_sep#[bg=$theme_l6,fg=$theme_r1]  \
+#I:#P $left_sep#[bg=$theme_l6,fg=$theme_r1]  \
 #{?client_prefix,$prefix_icons}"
 ##########################################################
 
